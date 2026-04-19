@@ -2507,8 +2507,8 @@ function Footer({ onNav }) {
             <span className="brand-sub">Tokiwa Valley</span>
           </div>
           <p style={{maxWidth: 360, color: 'var(--ink-2)', fontSize: 13, lineHeight: 1.9}}>
-            つくる人が、ふらっと立ち寄れる場所。
-            <br/>訪れる人と、作る人のための居場所。
+            つくる人が、ふらっと立ち寄れて、
+            <br/>少し手を動かして帰れる場所。
           </p>
         </div>
         <div>
@@ -2589,14 +2589,14 @@ function Overview({ onNav }) {
               トキワバレーは、ものづくりに惹かれる人々が<br/>
               ゆっくり立ち寄るための場所です。<br/>
               教室でも、会社でも、コミュニティでもない。<br/>
-              季節のように、また訪れたくなる地形を目指して。
+              またふらっと来たくなる場所を、ゆっくり育てています。
             </p>
             <div className="hero-meta">
               <span className="mono">N 35°01'　E 135°46'</span>
               <span className="mono">春 / 2026</span>
             </div>
             <p className="hero-company">
-              運営会社　
+              運営会社:
               <a href="https://sakurarin.co.jp/" target="_blank" rel="noopener">
                 株式会社SakuraRin
               </a>
@@ -2629,7 +2629,8 @@ function Overview({ onNav }) {
               トキワバレーはその土地の名前で、特定のサービスでも、会員制の集まりでもありません。
             </p>
             <p className="intro-text">
-              ここには、作品と、儀式と、戻ってくる理由がある。
+              ここには、作品があり、集まる時間があり、
+              また来たくなる理由があります。
               旗艦である <em><a href="https://sakurarin.co.jp/" target="_blank" rel="noopener">桜鈴 (SakuraRin)</a></em> を含めいくつかの活動が流れ込み、
               それぞれの季節に合わせて姿を変えていきます。
             </p>
@@ -2643,7 +2644,7 @@ function Overview({ onNav }) {
       <section className="three container">
         <div className="section-head">
           <span className="mono">— 02　この場所について</span>
-          <h2 className="section-title">三つの地形</h2>
+          <h2 className="section-title">この場所をつくる三つの要素</h2>
         </div>
 
         <div className="blocks">
@@ -2689,7 +2690,7 @@ function Overview({ onNav }) {
             </h2>
             <p className="cta-sub">
               新しい催しや、谷間の風景を、年に四度ほど。<br/>
-              購読は自由で、返事は任意です。
+              気が向いたときに読んでもらえたらうれしいです。お返事も、もちろん自由です。
             </p>
           </div>
           <div className="cta-actions">
@@ -3139,8 +3140,8 @@ function Events({ onNav }) {
               <div className="expo-en mono">OSAKA&nbsp;AI&nbsp;CULTURE&nbsp;EXPO — 2026.01.24</div>
               <h2 className="expo-title">大阪AI文化万博<span className="expo-title-dot">。</span></h2>
               <p className="expo-sub">
-                つくる喜びを、AIと共に。<br/>
-                <span className="moss">観て、共有して、つながる1日。</span>
+                AIを使ってつくる人たちが、実際に集まり、<br/>
+                <span className="moss">作品を見せ合い、話せた一日でした。</span>
               </p>
               <p className="expo-kicker">
                 国内最大級のAIクリエイターコミュニティ発、
@@ -3509,7 +3510,7 @@ function Events({ onNav }) {
                 <span className="arrow">↗</span>
               </a>
               <a className="btn-ghost" onClick={(e)=>{e.preventDefault(); onNav('contact');}} href="#contact">
-                今後の開催について問い合わせる　—
+                次の開催について聞いてみる　—
               </a>
             </div>
           </div>
@@ -3546,8 +3547,8 @@ function Contact({ onNav }) {
   const subjects = [
     { id: 'general', label: '一般のお問い合わせ', sub: 'GENERAL' },
     { id: 'collab',  label: '協働・共催のご相談', sub: 'COLLABORATION' },
-    { id: 'press',   label: '取材・掲載',         sub: 'PRESS' },
-    { id: 'letter',  label: 'ただの便り',         sub: 'JUST A LETTER' },
+    { id: 'press',   label: '取材・掲載のご相談', sub: 'PRESS' },
+    { id: 'letter',  label: 'ひとこと便り',       sub: 'JUST A LETTER' },
   ];
 
   return (
