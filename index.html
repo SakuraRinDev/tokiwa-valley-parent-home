@@ -601,8 +601,15 @@ h1, h2, h3, h4 {
   position: relative;
   transition: background .5s ease;
 }
+.block-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
 .block:last-child { border-right: 0; }
 .block:hover { background: rgba(226,217,195,0.4); }
+.block-link:hover .block-title { color: var(--moss-deep); }
 .block-num {
   color: var(--amber);
   font-size: 13px;
@@ -2648,7 +2655,12 @@ function Overview({ onNav }) {
         </div>
 
         <div className="blocks">
-          <article className="block reveal">
+          <a
+            className="block reveal block-link"
+            href="https://tokiwa-hp-current.vercel.app/"
+            target="_blank"
+            rel="noopener"
+          >
             <div className="block-num mono">i.</div>
             <h3 className="block-title">作品</h3>
             <p className="block-sub mono">WORKS</p>
@@ -2656,7 +2668,7 @@ function Overview({ onNav }) {
               訪れた人が残していった手跡。小さな実験も、未完のスケッチも、
               ここでは等しく「作品」として扱われます。完成ではなく、続きがあることを前提に。
             </p>
-          </article>
+          </a>
 
           <article className="block reveal" style={{transitionDelay:'.1s'}}>
             <div className="block-num mono">ii.</div>
