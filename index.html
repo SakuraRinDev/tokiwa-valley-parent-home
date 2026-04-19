@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>常盤渓谷 — Tokiwa Valley</title>
+<title>トキワバレー — Tokiwa Valley</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -2456,7 +2456,7 @@ function Nav({ route, onNav }) {
     <nav className="nav">
       <div className="nav-inner">
         <div className="brand" onClick={() => onNav('overview')} style={{cursor:'pointer'}}>
-          <span className="brand-mark">常盤渓谷</span>
+          <span className="brand-mark">トキワバレー</span>
           <span className="brand-sub">Tokiwa&nbsp;Valley</span>
         </div>
 
@@ -2490,12 +2490,12 @@ function Footer({ onNav }) {
       <div className="footer-inner">
         <div>
           <div className="brand" style={{marginBottom: 16}}>
-            <span className="brand-mark">常盤渓谷</span>
+            <span className="brand-mark">トキワバレー</span>
             <span className="brand-sub">Tokiwa Valley</span>
           </div>
           <p style={{maxWidth: 360, color: 'var(--ink-2)', fontSize: 13, lineHeight: 1.9}}>
-            技術と創作のあいだに、小さな渓谷をひらく。
-            <br/>訪れる人々と、作る人々のための居場所。
+            つくる人が、ふらっと立ち寄れる場所。
+            <br/>訪れる人と、作る人のための居場所。
           </p>
         </div>
         <div>
@@ -2523,7 +2523,7 @@ function Footer({ onNav }) {
         </div>
       </div>
       <div className="footer-base">
-        <span>© 2026 常盤渓谷 / TOKIWA VALLEY</span>
+        <span>© 2026 トキワバレー / TOKIWA VALLEY</span>
         <span>EST. 2023 — KYOTO, JAPAN</span>
       </div>
     </footer>
@@ -2566,14 +2566,14 @@ function Overview({ onNav }) {
       <section className="hero">
         <div className="hero-grid">
           <div className="hero-left">
-            <div className="eyebrow">常盤渓谷 · EST 2023</div>
+            <div className="eyebrow">トキワバレー · EST 2023</div>
             <h1 className="hero-title">
-              <span className="line">技術と創作の</span>
-              <span className="line">あいだを歩く、</span>
-              <span className="line hero-accent">静かな渓谷。</span>
+              <span className="line">ふらっと来れて、</span>
+              <span className="line">何かつくれて、</span>
+              <span className="line hero-accent">また来たくなる場所。</span>
             </h1>
             <p className="hero-lede">
-              常盤渓谷は、ものづくりに惹かれる人々が<br/>
+              トキワバレーは、ものづくりに惹かれる人々が<br/>
               ゆっくり立ち寄るための場所です。<br/>
               教室でも、会社でも、コミュニティでもない。<br/>
               季節のように、また訪れたくなる地形を目指して。
@@ -2607,7 +2607,7 @@ function Overview({ onNav }) {
             <p className="intro-text">
               私たちは、技術を<em>道具</em>としてではなく、<em>風景</em>として捉えています。
               コードもデザインも、ひとつの手仕事であり、やがて土地になる。
-              常盤渓谷はその土地の名前で、特定のサービスでも、会員制の集まりでもありません。
+              トキワバレーはその土地の名前で、特定のサービスでも、会員制の集まりでもありません。
             </p>
             <p className="intro-text">
               ここには、作品と、儀式と、戻ってくる理由がある。
@@ -3646,7 +3646,7 @@ function Contact({ onNav }) {
                   onChange={e => update('message', e.target.value)}
                   onFocus={() => setFocus('message')}
                   onBlur={() => setFocus(null)}
-                  placeholder="拝啓、常盤渓谷のみなさま…"
+                  placeholder="拝啓、トキワバレーのみなさま…"
                   className={focus === 'message' ? 'focus' : ''}
                 ></textarea>
                 <div className="count mono">{form.message.length} 字</div>
