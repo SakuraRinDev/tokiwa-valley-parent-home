@@ -487,6 +487,19 @@ h1, h2, h3, h4 {
   border-top: 1px solid var(--rule);
   max-width: 360px;
 }
+.hero-company {
+  margin-top: 18px;
+  color: var(--ink-2);
+  font-size: 13px;
+  line-height: 1.9;
+}
+.hero-company a {
+  border-bottom: 1px solid var(--ink-2);
+}
+.hero-company a:hover {
+  color: var(--moss);
+  border-color: var(--moss);
+}
 .hero-right {
   position: relative;
   display: flex;
@@ -2509,7 +2522,7 @@ function Footer({ onNav }) {
         <div>
           <h4 className="mono">関連</h4>
           <ul>
-            <li><a href="#">SakuraRin 桜鈴</a></li>
+            <li><a href="https://sakurarin.co.jp/" target="_blank" rel="noopener">SakuraRin 桜鈴</a></li>
             <li><a href="#">書簡 / Letters</a></li>
             <li><a href="#">作品集</a></li>
           </ul>
@@ -2582,6 +2595,12 @@ function Overview({ onNav }) {
               <span className="mono">N 35°01'　E 135°46'</span>
               <span className="mono">春 / 2026</span>
             </div>
+            <p className="hero-company">
+              運営会社　
+              <a href="https://sakurarin.co.jp/" target="_blank" rel="noopener">
+                株式会社SakuraRin
+              </a>
+            </p>
           </div>
 
           <div className="hero-right">
@@ -2611,7 +2630,7 @@ function Overview({ onNav }) {
             </p>
             <p className="intro-text">
               ここには、作品と、儀式と、戻ってくる理由がある。
-              旗艦である <em>桜鈴 (SakuraRin)</em> を含めいくつかの活動が流れ込み、
+              旗艦である <em><a href="https://sakurarin.co.jp/" target="_blank" rel="noopener">桜鈴 (SakuraRin)</a></em> を含めいくつかの活動が流れ込み、
               それぞれの季節に合わせて姿を変えていきます。
             </p>
           </div>
@@ -3292,7 +3311,7 @@ function Events({ onNav }) {
                   <span className="x-mark" aria-hidden="true">𝕏</span>
                 </header>
                 <p className="x-body">
-                  集まった作品はギャラリーとして公開され、1月24日 <span className="x-hash">#大阪AI文化万博</span> にて <span className="x-mention">Manus賞</span> ／ <span className="x-mention">SakuraRin賞</span> を発表します。
+                  集まった作品はギャラリーとして公開され、1月24日 <span className="x-hash">#大阪AI文化万博</span> にて <span className="x-mention">Manus賞</span> ／ <a href="https://sakurarin.co.jp/" target="_blank" rel="noopener" className="x-mention">SakuraRin賞</a> を発表します。
                 </p>
                 <footer className="x-foot">
                   <a className="mono x-src" href="https://twstalker.com/cursorvers" target="_blank" rel="noopener">source ↗</a>
@@ -3571,7 +3590,7 @@ function Contact({ onNav }) {
           <div className="addr reveal" style={{transitionDelay:'.1s'}}>
             <div className="mono addr-label">— 別経路</div>
             <ul className="addr-links">
-              <li><a href="#"><span>桜鈴 SakuraRin 窓口</span><span className="arrow">↗</span></a></li>
+              <li><a href="https://sakurarin.co.jp/" target="_blank" rel="noopener"><span>桜鈴 SakuraRin 窓口</span><span className="arrow">↗</span></a></li>
               <li><a href="#"><span>季節の便り (購読)</span><span className="arrow">↗</span></a></li>
               <li><a href="#"><span>催し情報 / 書簡</span><span className="arrow">↗</span></a></li>
             </ul>
