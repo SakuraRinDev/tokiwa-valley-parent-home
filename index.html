@@ -2679,7 +2679,16 @@ function Overview({ onNav }) {
             </p>
           </article>
 
-          <article className="block reveal" style={{transitionDelay:'.2s'}}>
+          <a
+            className="block reveal block-link"
+            style={{transitionDelay:'.2s'}}
+            href="#events"
+            onClick={(e)=>{
+              e.preventDefault();
+              window.__tokiwaPendingScroll = 'expo-feature';
+              onNav('events');
+            }}
+          >
             <div className="block-num mono">iii.</div>
             <h3 className="block-title">展示イベント</h3>
             <p className="block-sub mono">EXHIBITIONS</p>
@@ -2687,7 +2696,7 @@ function Overview({ onNav }) {
               作品展示や発表イベントも行っています。
               つくったものを見せたり、感想をもらったりできる場です。
             </p>
-          </article>
+          </a>
         </div>
       </section>
 
@@ -2854,6 +2863,18 @@ const EVENTS = [
 function Events({ onNav }) {
   useReveal();
   const [view, setView] = useState('list'); // 'list' | 'index'
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const targetId = window.__tokiwaPendingScroll;
+    if (!targetId) return;
+    const timer = setTimeout(() => {
+      const el = document.getElementById(targetId);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      window.__tokiwaPendingScroll = null;
+    }, 120);
+    return () => clearTimeout(timer);
+  }, []);
 
   const months = EVENTS.reduce((acc, e) => {
     const key = e.date.slice(0,7); // YYYY.MM
@@ -3121,7 +3142,7 @@ function Events({ onNav }) {
       </section>
 
       {/* ================= FEATURE 02 — OSAKA AI CULTURE EXPO ================= */}
-      <section className="expo" aria-label="Feature: 大阪AI文化万博">
+      <section id="expo-feature" className="expo" aria-label="Feature: 大阪AI文化万博">
         <div className="expo-inner">
           <div className="expo-label-row">
             <span className="mono expo-mono">— FEATURE CASE · 02 / CULTURE EXPO</span>
