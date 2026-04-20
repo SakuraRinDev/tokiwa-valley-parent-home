@@ -510,21 +510,29 @@ h1, h2, h3, h4 {
   flex: 1;
   aspect-ratio: 3/4;
   position: relative;
-  background:
-    radial-gradient(circle at 18% 18%, rgba(255,255,255,0.76), transparent 24%),
-    radial-gradient(circle at 84% 26%, rgba(137, 150, 121, 0.16), transparent 20%),
-    linear-gradient(180deg, #eee7d9 0%, #ded4c0 48%, #d7ccb6 100%);
+  overflow: hidden;
+  border: 1px solid rgba(28,26,22,0.08);
+  background: #d9d3c8;
   isolation: isolate;
+}
+.hero-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  filter: saturate(1.02) contrast(1.03);
+  z-index: 0;
 }
 .hero-image::after {
   content: "";
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(255,255,255,0.14), transparent 30%, transparent 70%, rgba(28,26,22,0.08)),
-    radial-gradient(ellipse at 50% 55%, rgba(255,248,233,0.55), transparent 38%);
-  mix-blend-mode: screen;
+    linear-gradient(180deg, rgba(244,240,232,0.12) 0%, rgba(244,240,232,0.02) 26%, rgba(20,18,16,0.06) 72%, rgba(20,18,16,0.28) 100%);
   pointer-events: none;
+  z-index: 1;
 }
 .hero-aura {
   position: absolute;
@@ -667,8 +675,19 @@ h1, h2, h3, h4 {
   bottom: 16px;
   font-size: 10px;
   letter-spacing: 0.16em;
-  color: rgba(54,52,46,0.68);
-  z-index: 6;
+  color: rgba(255,255,255,0.86);
+  text-shadow: 0 1px 8px rgba(0,0,0,0.35);
+  z-index: 3;
+}
+.hero-image .ph-label {
+  color: rgba(255,255,255,0.92);
+  background: rgba(17,16,14,0.34);
+  z-index: 3;
+}
+.hero-image .ph-num {
+  color: rgba(255,255,255,0.9);
+  text-shadow: 0 1px 8px rgba(0,0,0,0.35);
+  z-index: 3;
 }
 .hero-tate {
   color: var(--ink-3);
@@ -2794,23 +2813,16 @@ function Overview({ onNav }) {
           </div>
 
           <div className="hero-right">
-            <div className="ph hero-image">
+            <div className="hero-image">
+              <img
+                className="hero-photo"
+                src="images/tokiwa-hero-main.jpg"
+                alt="トキワバレーのメインビジュアル"
+                loading="eager"
+              />
               <span className="ph-label">IMG · 001 / tokiwa valley</span>
-              <div className="hero-aura"></div>
-              <div className="hero-contours"></div>
-              <div className="hero-path hero-path-1"></div>
-              <div className="hero-path hero-path-2"></div>
-              <div className="hero-path hero-path-3"></div>
-              <span className="hero-node hero-node-1"></span>
-              <span className="hero-node hero-node-2"></span>
-              <span className="hero-node hero-node-3"></span>
-              <span className="hero-node hero-node-4"></span>
-              <div className="hero-core"></div>
-              <div className="hero-valley hero-valley-back"></div>
-              <div className="hero-valley hero-valley-mid"></div>
-              <div className="hero-valley hero-valley-front"></div>
-              <span className="hero-caption mono">touchpoint / exchange / frontier</span>
-              <span className="ph-num">01 — touchpoint</span>
+              <span className="hero-caption mono">people / fashion / frontier</span>
+              <span className="ph-num">01 — main visual</span>
             </div>
             <div className="tate hero-tate">気軽に来て、また来られる場所</div>
           </div>
