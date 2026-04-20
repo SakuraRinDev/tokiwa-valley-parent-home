@@ -3878,6 +3878,13 @@ function News({ onNav }) {
     { label: 'MODEL SIGNALS', value: 'GPT / Claude / Gemini' },
   ];
 
+  const culturalStats = [
+    { label: 'CULTURAL DEBATES', value: '10' },
+    { label: 'WORK SIGNAL', value: '仕事 503' },
+    { label: 'COPYRIGHT', value: '著作権 134' },
+    { label: 'ETHICS / CULTURE', value: '倫理 63 / 文化 98' },
+  ];
+
   const articles = [
     {
       no: '01',
@@ -3961,6 +3968,89 @@ function News({ onNav }) {
     },
   ];
 
+  const culturalArticles = [
+    {
+      no: '11',
+      title: 'UI/UXは文化である、という感覚',
+      body: 'AIが設計を補助しても、読みやすさや心地よさは文化に強く依存します。均質化の先に、むしろ文化差が前に出ます。',
+      href: 'ai-news/11-uiux-is-culture.html',
+      signal: '文化 98 / UIUX',
+      chips: ['UIUX', 'CULTURE'],
+    },
+    {
+      no: '12',
+      title: '著作権と「コピペじゃない」の不安',
+      body: '作れることと使っていいことは違う。著作権と公開責任の話は、初期からかなり本質的に議論されていました。',
+      href: 'ai-news/12-copyright-and-copy.html',
+      signal: '著作権 134 / コピペ 131',
+      chips: ['COPYRIGHT', 'COPY'],
+    },
+    {
+      no: '13',
+      title: '失業不安より、キャリアをどう組み直すか',
+      body: 'AIの影響で仕事がどう変わるか、という不安は、やがてキャリア相談と役割再設計の議論へ接続されていきます。',
+      href: 'ai-news/13-work-and-career.html',
+      signal: '仕事 503 / 失業 14',
+      chips: ['WORK', 'CAREER'],
+    },
+    {
+      no: '14',
+      title: 'AIは先生になるのか、それとも補助線なのか',
+      body: '先生みたいに教えてくれるAIは便利です。ただ、教えることと育てることは違う。その距離感が丁寧に語られていました。',
+      href: 'ai-news/14-ai-as-teacher.html',
+      signal: '教育 128 / 先生 80',
+      chips: ['EDUCATION', 'TEACHER'],
+    },
+    {
+      no: '15',
+      title: '翻訳で壁は低くなったが、ニュアンス問題は残った',
+      body: '英語ソースへのアクセスは楽になった一方で、微妙なニュアンスや文化差は残る。翻訳は入口であって終点ではありません。',
+      href: 'ai-news/15-translation-and-nuance.html',
+      signal: '翻訳 207 / ソース 313',
+      chips: ['TRANSLATION', 'NUANCE'],
+    },
+    {
+      no: '16',
+      title: '健全な議論には、ルールが必要だった',
+      body: 'AIの議論は熱くなりやすいからこそ、論破を避ける規範が重要でした。共同学習を続けるための文化設計です。',
+      href: 'ai-news/16-community-rules.html',
+      signal: '議論 133 / 討論 5',
+      chips: ['RULES', 'DEBATE'],
+    },
+    {
+      no: '17',
+      title: 'クリエイターは減るのか、むしろ増えるのか',
+      body: 'AIは創作の入口を広げる一方で、競争も増やします。創作の民主化と過当競争が同時に進むという話です。',
+      href: 'ai-news/17-creators-future.html',
+      signal: 'クリエイター 67 / 創作 64',
+      chips: ['CREATORS', 'CREATION'],
+    },
+    {
+      no: '18',
+      title: '最後に残るのは、人間の判断かもしれない',
+      body: 'AIが提案を増やすほど、最後に決める責任はむしろ濃くなります。便利さの先にある人間の役割を扱った記事です。',
+      href: 'ai-news/18-human-judgment.html',
+      signal: '人間 730 / 倫理 63',
+      chips: ['HUMAN', 'JUDGMENT'],
+    },
+    {
+      no: '19',
+      title: '「オワコン」論が示す、期待の揺れ方',
+      body: 'AIを巡る熱狂と失望はとても速い。オワコン論は、技術が終わる話ではなく期待値が動く話として読む必要があります。',
+      href: 'ai-news/19-owakon-cycle.html',
+      signal: 'オワコン 14 / SEO 73',
+      chips: ['HYPE', 'CYCLE'],
+    },
+    {
+      no: '20',
+      title: '討論会にしたい、という一言から見える未来',
+      body: 'この1本だけは少し雑誌的な筆致で書いています。AI時代にコミュニティへ残る価値は、説明ではなく解釈の更新ではないか、という論考です。',
+      href: 'ai-news/20-discussion-room.html',
+      signal: '討論 5 / 議論 133',
+      chips: ['EDITORIAL', 'DISCUSSION'],
+    },
+  ];
+
   const sources = [
     {
       title: 'OpenAI News',
@@ -4018,8 +4108,9 @@ function News({ onNav }) {
           </div>
           <div className="events-head-text">
             [LINE]AI研究所@トキワバレー の長い記録をもとに、
-            この場所で繰り返し語られてきた論点を 10 本の記事にまとめました。
-            ただの最新ニュースではなく、トキワバレーの中で何が本質だったかを読むためのページです。
+            この場所で繰り返し語られてきた論点を、アーカイブ特集 10 本と文化的討論 10 本の、
+            合計 20 本の記事にまとめました。単なる最新ニュースではなく、
+            トキワバレーの中で何が本質だったかを読むためのページです。
           </div>
         </div>
       </section>
@@ -4068,9 +4159,53 @@ function News({ onNav }) {
         </div>
       </section>
 
-      <section className="news-sources container">
+      <section className="news-archive container">
         <div className="section-head">
           <div className="mono">— 02</div>
+          <h2 className="section-title">文化的な討論 10本</h2>
+        </div>
+
+        <p className="news-note reveal">
+          ここでは、機能比較や使い方ではなく、AIが仕事、創作、教育、著作権、翻訳、コミュニティに何を起こしたかを扱います。
+          トキワバレーの中で「文化として何が変わるのか」をめぐって出てきた論点を、10 本の長文にまとめました。
+          そのうち 1 本は、少しだけテックカルチャー誌のような鋭い論考トーンに寄せています。
+        </p>
+
+        <div className="news-stat-strip">
+          {culturalStats.map((item, index) => (
+            <div className="news-stat reveal" key={item.label} style={{transitionDelay: `${index * 0.04}s`}}>
+              <span className="mono news-stat-label">{item.label}</span>
+              <strong className="news-stat-value">{item.value}</strong>
+            </div>
+          ))}
+        </div>
+
+        <div className="news-article-grid">
+          {culturalArticles.map((article, index) => (
+            <article className="news-article-card reveal" key={article.no} style={{transitionDelay: `${index * 0.04}s`}}>
+              <div className="news-article-head">
+                <span className="mono news-article-no">NO. {article.no}</span>
+                <div className="news-chip-row">
+                  {article.chips.map(chip => (
+                    <span className="mono news-chip" key={chip}>{chip}</span>
+                  ))}
+                </div>
+              </div>
+
+              <h3 className="news-article-title">{article.title}</h3>
+              <p className="news-article-body">{article.body}</p>
+              <p className="mono news-article-signal">CULTURAL SIGNAL / {article.signal}</p>
+              <a className="btn-ghost" href={article.href}>
+                記事を読む　—
+              </a>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="news-sources container">
+        <div className="section-head">
+          <div className="mono">— 03</div>
           <h2 className="section-title">外部の公式ソース</h2>
         </div>
 
@@ -4101,12 +4236,12 @@ function News({ onNav }) {
       <section className="cta container">
         <div className="cta-inner">
           <div>
-            <div className="mono">— 03</div>
+            <div className="mono">— 04</div>
             <h2 className="cta-title">
               読んで終わりではなく、<br/>そのまま話せる場所にしています。
             </h2>
             <p className="cta-sub">
-              この 10 本はアーカイブの再編集です。
+              この 20 本はアーカイブの再編集です。
               気になった論点があれば、コミュニティに入るか、過去イベントを見て、
               今のトキワバレーの文脈にそのままつなげてください。
             </p>
