@@ -3871,231 +3871,6 @@ window.Events = Events;
 function News({ onNav }) {
   useReveal();
 
-  const stats = [
-    { label: 'ARCHIVE', value: '2023—2026' },
-    { label: 'MESSAGES', value: '50,211' },
-    { label: 'SPEAKERS', value: '1,583' },
-    { label: 'MODEL SIGNALS', value: 'GPT / Claude / Gemini' },
-  ];
-
-  const culturalStats = [
-    { label: 'CULTURAL DEBATES', value: '10' },
-    { label: 'WORK SIGNAL', value: '仕事 503' },
-    { label: 'COPYRIGHT', value: '著作権 134' },
-    { label: 'ETHICS / CULTURE', value: '倫理 63 / 文化 98' },
-  ];
-
-  const articles = [
-    {
-      no: '01',
-      title: 'AIは、初心者向けの説明会から広がった',
-      body: 'この記録で目立つのは、初心者向けの説明会や質問しやすい空気です。そうした入口があったから、AIを使い始める人が増えていきました。',
-      href: 'ai-news/01-beginners-first.html',
-      signal: '初心者 719 / 勉強 488',
-      chips: ['BEGINNERS', 'LEARNING'],
-    },
-    {
-      no: '02',
-      title: 'プロンプトは意図の翻訳だった',
-      body: '役割指定、読者指定、出力形式の指定。共有されていたのは呪文ではなく、やりたいことを具体化するための書き方でした。',
-      href: 'ai-news/02-prompt-translation.html',
-      signal: 'プロンプト 1,537 / GPT 4,799',
-      chips: ['PROMPT', 'PRACTICE'],
-    },
-    {
-      no: '03',
-      title: 'エラー文が、そのまま次の一手になった',
-      body: '動かないコードやAPIエラーをAIに投げ返し、人間が補足する。デバッグの止まり方が変わったことが、実装の壁を低くしました。',
-      href: 'ai-news/03-error-dialogue.html',
-      signal: 'エラー 329 / API 873',
-      chips: ['DEBUG', 'API'],
-    },
-    {
-      no: '04',
-      title: '最初の導入は、シートとGASから始まった',
-      body: 'AI導入は大きな新システムではなく、スプレッドシートやGASのような既存業務の近くから立ち上がっていました。',
-      href: 'ai-news/04-sheets-gas-automation.html',
-      signal: 'スプレッドシート 57 / GAS 77',
-      chips: ['WORKFLOW', 'AUTOMATION'],
-    },
-    {
-      no: '05',
-      title: 'SEO運用は、量産より検証へ向かった',
-      body: '記事生成や構成案づくりの熱狂はすぐに、ファクトチェックや社会的証明の議論へ移りました。編集の仕事は消えませんでした。',
-      href: 'ai-news/05-seo-media-trust.html',
-      signal: 'SEO 73 / ブログ 153',
-      chips: ['SEO', 'TRUST'],
-    },
-    {
-      no: '06',
-      title: '画像・動画・デザインが幅を広げた',
-      body: 'AIの話題は文章だけで終わらず、画像、動画、カラー、パッケージ、スライドへと広がりました。創作の入口が一気に増えています。',
-      href: 'ai-news/06-multimodal-creation.html',
-      signal: '画像 7,070 / 動画 2,670',
-      chips: ['IMAGE', 'VIDEO'],
-    },
-    {
-      no: '07',
-      title: 'アプリ化の欲求が、作る側を増やした',
-      body: 'Androidアプリ、サイトのアプリ化、要件定義。AIを使うだけでなく、自分のサービスに埋め込もうとする動きが早くから出ていました。',
-      href: 'ai-news/07-app-makers.html',
-      signal: 'アプリ 1,106 / コード 822',
-      chips: ['APP', 'BUILDERS'],
-    },
-    {
-      no: '08',
-      title: '論文と出典確認が、基礎体力になった',
-      body: 'Bing のソース表示、論文検索、参考文献へのアクセス。AIを信じるのではなく、AIを使って確かめる姿勢が育っていました。',
-      href: 'ai-news/08-sources-and-research.html',
-      signal: '論文 205 / Bing 226',
-      chips: ['RESEARCH', 'SOURCES'],
-    },
-    {
-      no: '09',
-      title: 'ChatGPT一強から、比較運用の時代へ',
-      body: 'Claude、Gemini、Bing が比較対象になり、モデルを用途で選ぶ感覚が共有されていきました。これは今の実務にも直結します。',
-      href: 'ai-news/09-model-shifts.html',
-      signal: 'ChatGPT 1,827 / Claude 725 / Gemini 1,125',
-      chips: ['MODELS', 'COMPARISON'],
-    },
-    {
-      no: '10',
-      title: 'AI研究所そのものが、共同学習の装置だった',
-      body: '50,211 メッセージの往復そのものが、AIを学ぶためのインターフェースになっていました。トキワバレーの本質はここにあります。',
-      href: 'ai-news/10-community-interface.html',
-      signal: '50,211 messages / 1,583 speakers',
-      chips: ['COMMUNITY', 'ARCHIVE'],
-    },
-  ];
-
-  const culturalArticles = [
-    {
-      no: '11',
-      title: 'UI/UXは文化である、という感覚',
-      body: 'AIが設計を補助しても、読みやすさや心地よさは文化に強く依存します。均質化の先に、むしろ文化差が前に出ます。',
-      href: 'ai-news/11-uiux-is-culture.html',
-      signal: '文化 98 / UIUX',
-      chips: ['UIUX', 'CULTURE'],
-    },
-    {
-      no: '12',
-      title: '著作権と「コピペじゃない」の不安',
-      body: '作れることと使っていいことは違う。著作権と公開責任の話は、初期からかなり本質的に議論されていました。',
-      href: 'ai-news/12-copyright-and-copy.html',
-      signal: '著作権 134 / コピペ 131',
-      chips: ['COPYRIGHT', 'COPY'],
-    },
-    {
-      no: '13',
-      title: '失業不安より、キャリアをどう組み直すか',
-      body: 'AIの影響で仕事がどう変わるか、という不安は、やがてキャリア相談と役割再設計の議論へ接続されていきます。',
-      href: 'ai-news/13-work-and-career.html',
-      signal: '仕事 503 / 失業 14',
-      chips: ['WORK', 'CAREER'],
-    },
-    {
-      no: '14',
-      title: 'AIは先生になるのか、それとも補助線なのか',
-      body: '先生みたいに教えてくれるAIは便利です。ただ、教えることと育てることは違う。その距離感が丁寧に語られていました。',
-      href: 'ai-news/14-ai-as-teacher.html',
-      signal: '教育 128 / 先生 80',
-      chips: ['EDUCATION', 'TEACHER'],
-    },
-    {
-      no: '15',
-      title: '翻訳で壁は低くなったが、ニュアンス問題は残った',
-      body: '英語ソースへのアクセスは楽になった一方で、微妙なニュアンスや文化差は残る。翻訳は入口であって終点ではありません。',
-      href: 'ai-news/15-translation-and-nuance.html',
-      signal: '翻訳 207 / ソース 313',
-      chips: ['TRANSLATION', 'NUANCE'],
-    },
-    {
-      no: '16',
-      title: '健全な議論には、ルールが必要だった',
-      body: 'AIの議論は熱くなりやすいからこそ、論破を避ける規範が重要でした。共同学習を続けるための文化設計です。',
-      href: 'ai-news/16-community-rules.html',
-      signal: '議論 133 / 討論 5',
-      chips: ['RULES', 'DEBATE'],
-    },
-    {
-      no: '17',
-      title: 'クリエイターは減るのか、むしろ増えるのか',
-      body: 'AIは創作の入口を広げる一方で、競争も増やします。創作の民主化と過当競争が同時に進むという話です。',
-      href: 'ai-news/17-creators-future.html',
-      signal: 'クリエイター 67 / 創作 64',
-      chips: ['CREATORS', 'CREATION'],
-    },
-    {
-      no: '18',
-      title: '最後に残るのは、人間の判断かもしれない',
-      body: 'AIが提案を増やすほど、最後に決める責任はむしろ濃くなります。便利さの先にある人間の役割を扱った記事です。',
-      href: 'ai-news/18-human-judgment.html',
-      signal: '人間 730 / 倫理 63',
-      chips: ['HUMAN', 'JUDGMENT'],
-    },
-    {
-      no: '19',
-      title: '「オワコン」論が示す、期待の揺れ方',
-      body: 'AIを巡る熱狂と失望はとても速い。オワコン論は、技術が終わる話ではなく期待値が動く話として読む必要があります。',
-      href: 'ai-news/19-owakon-cycle.html',
-      signal: 'オワコン 14 / SEO 73',
-      chips: ['HYPE', 'CYCLE'],
-    },
-    {
-      no: '20',
-      title: '討論会にしたい、という一言から見える未来',
-      body: 'この1本だけは少し雑誌的な筆致で書いています。AI時代にコミュニティへ残る価値は、説明ではなく解釈の更新ではないか、という論考です。',
-      href: 'ai-news/20-discussion-room.html',
-      signal: '討論 5 / 議論 133',
-      chips: ['EDITORIAL', 'DISCUSSION'],
-    },
-  ];
-
-  const sources = [
-    {
-      title: 'OpenAI News',
-      sub: 'OPENAI',
-      body: 'モデル、API、プロダクト更新を追うときの基本入口です。新機能や公開情報を最短で確認できます。',
-      url: 'https://openai.com/news/',
-      label: 'openai.com/news',
-    },
-    {
-      title: 'Anthropic Newsroom',
-      sub: 'ANTHROPIC',
-      body: 'Claude や関連プロダクト、研究、発表を追うための公式ページです。エージェント周辺の動きも見やすいです。',
-      url: 'https://www.anthropic.com/news',
-      label: 'anthropic.com/news',
-    },
-    {
-      title: 'Google DeepMind',
-      sub: 'GOOGLE',
-      body: '研究寄りの話題から Gemini 周辺の流れまで、Google 系のAI動向を追うときの軸になります。',
-      url: 'https://deepmind.google/blog/',
-      label: 'deepmind.google/blog',
-    },
-    {
-      title: 'Hugging Face Blog',
-      sub: 'OPEN SOURCE',
-      body: 'オープンモデル、周辺ツール、研究実装など、実務に近い変化を拾いやすいソースです。',
-      url: 'https://huggingface.co/blog',
-      label: 'huggingface.co/blog',
-    },
-    {
-      title: 'Cloudflare AI',
-      sub: 'INFRA',
-      body: 'AIアプリの運用、推論基盤、エージェント実装など、インフラ側の変化を見るのに向いています。',
-      url: 'https://blog.cloudflare.com/tag/ai/',
-      label: 'blog.cloudflare.com/tag/ai',
-    },
-    {
-      title: 'Vercel Blog',
-      sub: 'DEVTOOLS',
-      body: 'AI SDK やエージェント、プロダクト実装の流れを追いやすい開発者向けの情報源です。',
-      url: 'https://vercel.com/blog',
-      label: 'vercel.com/blog',
-    },
-  ];
-
   return (
     <main className="page page-fade">
       <section className="events-head container">
@@ -4103,15 +3878,12 @@ function News({ onNav }) {
           <div>
             <div className="eyebrow">AI NEWS · ニュース</div>
             <h1 className="events-title">
-              AI研究所の記録から、<br/>トキワバレーで何が本質だったか。
+              AIニュースは、<br/>いったん記事を下げています。
             </h1>
           </div>
           <div className="events-head-text">
-            [LINE]AI研究所@トキワバレー の長い記録をもとに、
-            この場所で繰り返し語られてきた論点を、アーカイブ特集 10 本と文化的討論 10 本の、
-            合計 20 本の記事にまとめました。単なる最新ニュースではなく、
-            トキワバレーの中で何が本質だったかを読むためのページです。
-            ここから先も、最低でも月 1 本以上のペースで追加していきます。
+            現在、公開していた AIニュース記事はすべて非表示にしています。
+            このページは残していますが、記事一覧と個別記事は、いったん整理しました。
           </div>
         </div>
       </section>
@@ -4119,132 +3891,36 @@ function News({ onNav }) {
       <section className="news-archive container">
         <div className="section-head">
           <div className="mono">— 01</div>
-          <h2 className="section-title">アーカイブ特集 10本</h2>
+          <h2 className="section-title">現在準備中です</h2>
         </div>
 
         <p className="news-note reveal">
-          アーカイブは 2023 年から 2026 年にまたがり、50,211 メッセージ、1,583 話者分あります。
-          そこから、初心者支援、プロンプト、エラー解決、GAS 導入、SEO、画像と動画、アプリ化、
-          出典確認、モデル比較、共同学習という 10 の論点を取り出しました。
+          AIニュースの記事は、いったんすべて下げています。
+          まとまり次第、必要なものだけを改めて公開します。
         </p>
 
         <div className="news-stat-strip">
-          {stats.map((item, index) => (
-            <div className="news-stat reveal" key={item.label} style={{transitionDelay: `${index * 0.04}s`}}>
-              <span className="mono news-stat-label">{item.label}</span>
-              <strong className="news-stat-value">{item.value}</strong>
-            </div>
-          ))}
-        </div>
-
-        <div className="news-article-grid">
-          {articles.map((article, index) => (
-            <article className="news-article-card reveal" key={article.no} style={{transitionDelay: `${index * 0.04}s`}}>
-              <div className="news-article-head">
-                <span className="mono news-article-no">NO. {article.no}</span>
-                <div className="news-chip-row">
-                  {article.chips.map(chip => (
-                    <span className="mono news-chip" key={chip}>{chip}</span>
-                  ))}
-                </div>
-              </div>
-
-              <h3 className="news-article-title">{article.title}</h3>
-              <p className="news-article-body">{article.body}</p>
-              <p className="mono news-article-signal">ARCHIVE SIGNAL / {article.signal}</p>
-              <a className="btn-ghost" href={article.href}>
-                記事を読む　—
-              </a>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="news-archive container">
-        <div className="section-head">
-          <div className="mono">— 02</div>
-          <h2 className="section-title">文化的な討論 10本</h2>
-        </div>
-
-        <p className="news-note reveal">
-          ここでは、機能比較や使い方ではなく、AIが仕事、創作、教育、著作権、翻訳、コミュニティに何を起こしたかを扱います。
-          トキワバレーの中で「文化として何が変わるのか」をめぐって出てきた論点を、10 本の長文にまとめました。
-          そのうち 1 本は、少しだけテックカルチャー誌のような鋭い論考トーンに寄せています。
-        </p>
-
-        <div className="news-stat-strip">
-          {culturalStats.map((item, index) => (
-            <div className="news-stat reveal" key={item.label} style={{transitionDelay: `${index * 0.04}s`}}>
-              <span className="mono news-stat-label">{item.label}</span>
-              <strong className="news-stat-value">{item.value}</strong>
-            </div>
-          ))}
-        </div>
-
-        <div className="news-article-grid">
-          {culturalArticles.map((article, index) => (
-            <article className="news-article-card reveal" key={article.no} style={{transitionDelay: `${index * 0.04}s`}}>
-              <div className="news-article-head">
-                <span className="mono news-article-no">NO. {article.no}</span>
-                <div className="news-chip-row">
-                  {article.chips.map(chip => (
-                    <span className="mono news-chip" key={chip}>{chip}</span>
-                  ))}
-                </div>
-              </div>
-
-              <h3 className="news-article-title">{article.title}</h3>
-              <p className="news-article-body">{article.body}</p>
-              <p className="mono news-article-signal">CULTURAL SIGNAL / {article.signal}</p>
-              <a className="btn-ghost" href={article.href}>
-                記事を読む　—
-              </a>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="news-sources container">
-        <div className="section-head">
-          <div className="mono">— 03</div>
-          <h2 className="section-title">外部の公式ソース</h2>
-        </div>
-
-        <p className="news-note reveal">
-          トキワバレーの中で育ってきた論点と合わせて、外側の公式情報も追えるようにしています。
-          モデルやプロダクトの更新を見たい時は、ここを起点にしてください。
-        </p>
-
-        <div className="news-source-grid">
-          {sources.map((source, index) => (
-            <a
-              key={source.title}
-              className="news-source-card reveal"
-              style={{transitionDelay: `${index * 0.05}s`}}
-              href={source.url}
-              target="_blank"
-              rel="noopener"
-            >
-              <span className="mono news-source-kicker">{source.sub}</span>
-              <h3 className="news-source-title">{source.title}</h3>
-              <p className="news-source-body">{source.body}</p>
-              <span className="mono news-source-url">{source.label} ↗</span>
-            </a>
-          ))}
+          <div className="news-stat reveal">
+            <span className="mono news-stat-label">STATUS</span>
+            <strong className="news-stat-value">0 Articles</strong>
+          </div>
+          <div className="news-stat reveal" style={{transitionDelay: '0.04s'}}>
+            <span className="mono news-stat-label">STATE</span>
+            <strong className="news-stat-value">Hidden</strong>
+          </div>
         </div>
       </section>
 
       <section className="cta container">
         <div className="cta-inner">
           <div>
-            <div className="mono">— 04</div>
+            <div className="mono">— 02</div>
             <h2 className="cta-title">
-              読んで終わりではなく、<br/>そのまま話せる場所にしています。
+              ニュース記事は下げましたが、<br/>トキワバレー自体は開いています。
             </h2>
             <p className="cta-sub">
-              この 20 本はアーカイブの再編集です。
-              気になった論点があれば、コミュニティに入るか、過去イベントを見て、
-              今のトキワバレーの文脈にそのままつなげてください。
+              コミュニティに入るか、過去イベントを見るか、
+              お問い合わせからそのままつながってください。
             </p>
           </div>
 
