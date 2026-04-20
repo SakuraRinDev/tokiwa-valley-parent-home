@@ -1233,6 +1233,90 @@ h1, h2, h3, h4 {
 }
 
 /* News */
+.news-archive { padding: 28px 40px 20px; }
+.news-stat-strip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 18px;
+}
+.news-stat {
+  padding: 18px 20px;
+  border: 1px solid var(--rule);
+  background: rgba(243,238,227,0.66);
+}
+.news-stat-label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--ink-3);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+}
+.news-stat-value {
+  display: block;
+  font-size: 28px;
+  line-height: 1.15;
+  font-family: var(--serif-display);
+}
+.news-article-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.news-article-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 320px;
+  padding: 28px;
+  border: 1px solid var(--rule);
+  background: rgba(243,238,227,0.66);
+}
+.news-article-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-start;
+}
+.news-article-no {
+  color: var(--amber);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+}
+.news-chip-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+.news-chip {
+  padding: 5px 8px;
+  border: 1px solid rgba(28,26,22,0.12);
+  color: var(--ink-3);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  background: rgba(255,255,255,0.42);
+}
+.news-article-title {
+  margin: 0;
+  font-size: 32px;
+  line-height: 1.14;
+  font-weight: 400;
+}
+.news-article-body {
+  margin: 0;
+  color: var(--ink-2);
+  font-size: 14px;
+  line-height: 1.95;
+}
+.news-article-signal {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid rgba(28,26,22,0.08);
+  color: var(--ink-3);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+}
 .news-sources { padding: 40px 40px; }
 .news-note {
   margin: 0 0 28px;
@@ -1321,6 +1405,10 @@ h1, h2, h3, h4 {
   .subject-grid { grid-template-columns: 1fr; }
   .letter-foot { flex-direction: column; align-items: stretch; }
   .letter-foot .btn { justify-content: center; }
+  .news-archive { padding: 40px 22px 20px; }
+  .news-stat-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .news-article-grid { grid-template-columns: 1fr; }
+  .news-article-card { min-height: auto; }
   .news-sources { padding: 40px 22px; }
   .news-source-grid { grid-template-columns: 1fr; }
   .news-source-card { min-height: auto; }
@@ -3783,6 +3871,96 @@ window.Events = Events;
 function News({ onNav }) {
   useReveal();
 
+  const stats = [
+    { label: 'ARCHIVE', value: '2023—2026' },
+    { label: 'MESSAGES', value: '50,211' },
+    { label: 'SPEAKERS', value: '1,583' },
+    { label: 'MODEL SIGNALS', value: 'GPT / Claude / Gemini' },
+  ];
+
+  const articles = [
+    {
+      no: '01',
+      title: '初心者歓迎が、AI普及の起点だった',
+      body: 'AI研究所のログからまず見えるのは、機能比較よりも「分からないまま入っていい」空気です。AIの入口は性能ではなく、質問できることでした。',
+      href: 'ai-news/01-beginners-first.html',
+      signal: '初心者 719 / 勉強 488',
+      chips: ['BEGINNERS', 'LEARNING'],
+    },
+    {
+      no: '02',
+      title: 'プロンプトは意図の翻訳だった',
+      body: '役割指定、読者指定、出力形式の指定。共有されていたのは呪文ではなく、やりたいことを具体化するための書き方でした。',
+      href: 'ai-news/02-prompt-translation.html',
+      signal: 'プロンプト 1,537 / GPT 4,799',
+      chips: ['PROMPT', 'PRACTICE'],
+    },
+    {
+      no: '03',
+      title: 'エラー文が、そのまま次の一手になった',
+      body: '動かないコードやAPIエラーをAIに投げ返し、人間が補足する。デバッグの止まり方が変わったことが、実装の壁を低くしました。',
+      href: 'ai-news/03-error-dialogue.html',
+      signal: 'エラー 329 / API 873',
+      chips: ['DEBUG', 'API'],
+    },
+    {
+      no: '04',
+      title: '最初の導入は、シートとGASから始まった',
+      body: 'AI導入は大きな新システムではなく、スプレッドシートやGASのような既存業務の近くから立ち上がっていました。',
+      href: 'ai-news/04-sheets-gas-automation.html',
+      signal: 'スプレッドシート 57 / GAS 77',
+      chips: ['WORKFLOW', 'AUTOMATION'],
+    },
+    {
+      no: '05',
+      title: 'SEO運用は、量産より検証へ向かった',
+      body: '記事生成や構成案づくりの熱狂はすぐに、ファクトチェックや社会的証明の議論へ移りました。編集の仕事は消えませんでした。',
+      href: 'ai-news/05-seo-media-trust.html',
+      signal: 'SEO 73 / ブログ 153',
+      chips: ['SEO', 'TRUST'],
+    },
+    {
+      no: '06',
+      title: '画像・動画・デザインが幅を広げた',
+      body: 'AIの話題は文章だけで終わらず、画像、動画、カラー、パッケージ、スライドへと広がりました。創作の入口が一気に増えています。',
+      href: 'ai-news/06-multimodal-creation.html',
+      signal: '画像 7,070 / 動画 2,670',
+      chips: ['IMAGE', 'VIDEO'],
+    },
+    {
+      no: '07',
+      title: 'アプリ化の欲求が、作る側を増やした',
+      body: 'Androidアプリ、サイトのアプリ化、要件定義。AIを使うだけでなく、自分のサービスに埋め込もうとする動きが早くから出ていました。',
+      href: 'ai-news/07-app-makers.html',
+      signal: 'アプリ 1,106 / コード 822',
+      chips: ['APP', 'BUILDERS'],
+    },
+    {
+      no: '08',
+      title: '論文と出典確認が、基礎体力になった',
+      body: 'Bing のソース表示、論文検索、参考文献へのアクセス。AIを信じるのではなく、AIを使って確かめる姿勢が育っていました。',
+      href: 'ai-news/08-sources-and-research.html',
+      signal: '論文 205 / Bing 226',
+      chips: ['RESEARCH', 'SOURCES'],
+    },
+    {
+      no: '09',
+      title: 'ChatGPT一強から、比較運用の時代へ',
+      body: 'Claude、Gemini、Bing が比較対象になり、モデルを用途で選ぶ感覚が共有されていきました。これは今の実務にも直結します。',
+      href: 'ai-news/09-model-shifts.html',
+      signal: 'ChatGPT 1,827 / Claude 725 / Gemini 1,125',
+      chips: ['MODELS', 'COMPARISON'],
+    },
+    {
+      no: '10',
+      title: 'AI研究所そのものが、共同学習の装置だった',
+      body: '50,211 メッセージの往復そのものが、AIを学ぶためのインターフェースになっていました。トキワバレーの本質はここにあります。',
+      href: 'ai-news/10-community-interface.html',
+      signal: '50,211 messages / 1,583 speakers',
+      chips: ['COMMUNITY', 'ARCHIVE'],
+    },
+  ];
+
   const sources = [
     {
       title: 'OpenAI News',
@@ -3835,67 +4013,70 @@ function News({ onNav }) {
           <div>
             <div className="eyebrow">AI NEWS · ニュース</div>
             <h1 className="events-title">
-              AIの動きを、<br/>気軽に追えるページ。
+              AI研究所の記録から、<br/>トキワバレーで何が本質だったか。
             </h1>
           </div>
           <div className="events-head-text">
-            トキワバレーが見ているAIの話題を、追いやすくまとめた入口です。
-            速報を全部並べるのではなく、まず見るべき公式ソースと、
-            日々追っているテーマにすぐ飛べるようにしています。
+            [LINE]AI研究所@トキワバレー の長い記録をもとに、
+            この場所で繰り返し語られてきた論点を 10 本の記事にまとめました。
+            ただの最新ニュースではなく、トキワバレーの中で何が本質だったかを読むためのページです。
           </div>
         </div>
       </section>
 
-      <section className="three container">
+      <section className="news-archive container">
         <div className="section-head">
           <div className="mono">— 01</div>
-          <h2 className="section-title">よく追うテーマ</h2>
+          <h2 className="section-title">アーカイブ特集 10本</h2>
         </div>
 
-        <div className="blocks">
-          <article className="block reveal">
-            <div className="block-num mono">i.</div>
-            <h3 className="block-title">基盤モデル</h3>
-            <div className="block-sub mono">FOUNDATION MODELS</div>
-            <p className="block-body">
-              新モデルの公開、性能の伸び、推論まわりの改善、APIや料金の更新など、
-              AI全体の土台がどう変わっているかを見ています。
-            </p>
-          </article>
+        <p className="news-note reveal">
+          アーカイブは 2023 年から 2026 年にまたがり、50,211 メッセージ、1,583 話者分あります。
+          そこから、初心者支援、プロンプト、エラー解決、GAS 導入、SEO、画像と動画、アプリ化、
+          出典確認、モデル比較、共同学習という 10 の論点を取り出しました。
+        </p>
 
-          <article className="block reveal" style={{transitionDelay: '.08s'}}>
-            <div className="block-num mono">ii.</div>
-            <h3 className="block-title">AIエージェント</h3>
-            <div className="block-sub mono">AI AGENTS</div>
-            <p className="block-body">
-              単発の生成だけでなく、調査、実装、運用までつながるエージェントの流れを追っています。
-              使い方が実務に近いので、変化が大きい領域です。
-            </p>
-          </article>
+        <div className="news-stat-strip">
+          {stats.map((item, index) => (
+            <div className="news-stat reveal" key={item.label} style={{transitionDelay: `${index * 0.04}s`}}>
+              <span className="mono news-stat-label">{item.label}</span>
+              <strong className="news-stat-value">{item.value}</strong>
+            </div>
+          ))}
+        </div>
 
-          <article className="block reveal" style={{transitionDelay: '.16s'}}>
-            <div className="block-num mono">iii.</div>
-            <h3 className="block-title">動画・画像・制作</h3>
-            <div className="block-sub mono">CREATIVE TOOLS</div>
-            <p className="block-body">
-              生成動画、画像、デザイン、編集補助など、
-              つくる人に直結するアップデートを中心に見ています。
-              実際の制作体験がどう変わるかを重視しています。
-            </p>
-          </article>
+        <div className="news-article-grid">
+          {articles.map((article, index) => (
+            <article className="news-article-card reveal" key={article.no} style={{transitionDelay: `${index * 0.04}s`}}>
+              <div className="news-article-head">
+                <span className="mono news-article-no">NO. {article.no}</span>
+                <div className="news-chip-row">
+                  {article.chips.map(chip => (
+                    <span className="mono news-chip" key={chip}>{chip}</span>
+                  ))}
+                </div>
+              </div>
+
+              <h3 className="news-article-title">{article.title}</h3>
+              <p className="news-article-body">{article.body}</p>
+              <p className="mono news-article-signal">ARCHIVE SIGNAL / {article.signal}</p>
+              <a className="btn-ghost" href={article.href}>
+                記事を読む　—
+              </a>
+            </article>
+          ))}
         </div>
       </section>
 
       <section className="news-sources container">
         <div className="section-head">
           <div className="mono">— 02</div>
-          <h2 className="section-title">まず見る公式ソース</h2>
+          <h2 className="section-title">外部の公式ソース</h2>
         </div>
 
         <p className="news-note reveal">
-          OpenAI、Anthropic、Google DeepMind などの公式更新に加えて、
-          実装や運用に近い変化を拾いやすいソースも並べています。
-          「何から見ればいいか」を迷わないための入口です。
+          トキワバレーの中で育ってきた論点と合わせて、外側の公式情報も追えるようにしています。
+          モデルやプロダクトの更新を見たい時は、ここを起点にしてください。
         </p>
 
         <div className="news-source-grid">
@@ -3922,11 +4103,12 @@ function News({ onNav }) {
           <div>
             <div className="mono">— 03</div>
             <h2 className="cta-title">
-              気になった話題は、<br/>そのまま話せるようにしています。
+              読んで終わりではなく、<br/>そのまま話せる場所にしています。
             </h2>
             <p className="cta-sub">
-              ニュースを見るだけで終わらせず、コミュニティや過去イベントにもそのままつながれるようにしています。
-              気になったテーマがあれば、そこから参加してください。
+              この 10 本はアーカイブの再編集です。
+              気になった論点があれば、コミュニティに入るか、過去イベントを見て、
+              今のトキワバレーの文脈にそのままつなげてください。
             </p>
           </div>
 

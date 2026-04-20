@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>エラー文を投げ返すだけで、実装は前に進んだ | Tokiwa Valley AI News</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body style="--accent:#7b4c47">
+  <div class="page">
+    <div class="topbar">
+      <a href="../index.html#news">← AIニュースへ戻る</a>
+      <span>Tokiwa Valley AI News / 03</span>
+    </div>
+
+    <section class="hero">
+      <div class="eyebrow">Archive Feature / Debugging</div>
+      <h1 class="title">エラー文を投げ返すだけで、<br>実装は前に進んだ</h1>
+      <p class="lede">このアーカイブには、派手なデモよりも「エラーが出ました」のやりとりが数多く残っています。そこから見えるのは、AIがコードを書く道具というより、<span class="accent">デバッグの壁打ち相手</span> として機能していた事実です。</p>
+      <div class="stats">
+        <div class="stat"><span>Signal</span><strong>エラー 329</strong></div>
+        <div class="stat"><span>Related</span><strong>API 873</strong></div>
+        <div class="stat"><span>Pattern</span><strong>対話型デバッグ</strong></div>
+        <div class="stat"><span>Years</span><strong>2023—2026</strong></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>よくあった流れ</h2>
+      <p>配布されたスプレッドシート連携のコードが動かない、API パラメータの型が違う、GPT 関数が見つからない。こうしたトラブルに対して、まずコミュニティで状況を共有し、そのエラー文を ChatGPT に読み解かせて、さらに人間が補足する。この往復が、実装の足場になっていました。</p>
+      <p>重要なのは、AIが一発で直したことではなく、何を確認すればいいかの視界を開いていたことです。</p>
+    </section>
+
+    <section class="section two-col">
+      <div>
+        <h2>本質は「止まり方が変わった」こと</h2>
+        <p>従来の初心者は、エラー画面が出た時点で止まりがちでした。AIが入ることで、エラーは終点ではなく入力データになった。完全に解決しなくても、次に見るべき場所が分かるだけで前進できます。トキワバレーでは、この変化がかなり早い段階で共有されていました。</p>
+        <ul class="list">
+          <li>エラー文をそのままAIへ渡す、という行為が定着した</li>
+          <li>人間側は「それを初心者向けに言い換えて」と再度噛み砕けた</li>
+          <li>コミュニティが最後の補助輪として機能した</li>
+        </ul>
+      </div>
+      <aside class="quote">
+        <span class="quote-label">Archive Excerpts</span>
+        <p>[運営]「エラー文ChatGPTにぶっ込んでみるやりました？」</p>
+        <p>[参加者]「'max_tokens' が integer 型である必要がありますが、その代わりに string 型が渡されたためにエラーが発生しています」</p>
+        <p>[運営]「数値入れるところに文字が入ってる感じですね！」</p>
+      </aside>
+    </section>
+
+    <section class="section">
+      <h2>トキワバレーの見立て</h2>
+      <p>AI時代の実装力は、ゼロから全部書けることだけでは決まりません。エラーを読み、AIに渡し、人間が補足し、次の一手を見つける。この反復ができることのほうが、実務ではずっと効きます。トキワバレーで本質的に語られていたのは、まさにその「止まらないためのやり方」でした。</p>
+    </section>
+
+    <div class="footer">
+      <p>Source: [LINE]AI研究所@トキワバレー.txt（内部アーカイブ / 2023–2026）をもとに再構成</p>
+      <div class="footer-links">
+        <a href="../index.html#news">AIニュースへ戻る</a>
+        <a href="../index.html#contact">お問い合わせ</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
