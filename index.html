@@ -2669,7 +2669,16 @@ function Overview({ onNav }) {
             </p>
           </a>
 
-          <article className="block reveal" style={{transitionDelay:'.1s'}}>
+          <a
+            className="block reveal block-link"
+            style={{transitionDelay:'.1s'}}
+            href="#events"
+            onClick={(e)=>{
+              e.preventDefault();
+              window.__tokiwaPendingScroll = 'events-list-start';
+              onNav('events');
+            }}
+          >
             <div className="block-num mono">ii.</div>
             <h3 className="block-title">勉強会</h3>
             <p className="block-sub mono">MEETUPS</p>
@@ -2677,7 +2686,7 @@ function Overview({ onNav }) {
               AIやものづくりに関する勉強会や交流会を開いています。
               初めての人でも参加しやすい内容を大切にしています。
             </p>
-          </article>
+          </a>
 
           <a
             className="block reveal block-link"
@@ -2868,12 +2877,17 @@ function Events({ onNav }) {
     if (typeof window === 'undefined') return;
     const targetId = window.__tokiwaPendingScroll;
     if (!targetId) return;
-    const timer = setTimeout(() => {
+    const scrollToTarget = (behavior = 'smooth') => {
       const el = document.getElementById(targetId);
-      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      window.__tokiwaPendingScroll = null;
-    }, 120);
-    return () => clearTimeout(timer);
+      if (el) el.scrollIntoView({ behavior, block: 'start' });
+    };
+    const timers = [
+      setTimeout(() => scrollToTarget('smooth'), 120),
+      setTimeout(() => scrollToTarget('auto'), 900),
+      setTimeout(() => scrollToTarget('auto'), 1800),
+    ];
+    window.__tokiwaPendingScroll = null;
+    return () => timers.forEach(clearTimeout);
   }, []);
 
   const months = EVENTS.reduce((acc, e) => {
@@ -3417,7 +3431,7 @@ function Events({ onNav }) {
       </section>
 
       {/* Viewing controls */}
-      <section className="arc-controls container">
+      <section id="events-list-start" className="arc-controls container">
         <div className="arc-controls-inner">
           <span className="mono arc-controls-label">— 表示</span>
           <div className="arc-view">
