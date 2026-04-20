@@ -1213,6 +1213,61 @@ h1, h2, h3, h4 {
   max-width: 460px;
 }
 
+/* News */
+.news-sources { padding: 40px 40px; }
+.news-note {
+  margin: 0 0 28px;
+  max-width: 760px;
+  font-size: 14px;
+  line-height: 2;
+  color: var(--ink-2);
+}
+.news-source-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.news-source-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-height: 220px;
+  padding: 28px;
+  border: 1px solid var(--rule);
+  background: rgba(243,238,227,0.66);
+  color: inherit;
+  text-decoration: none;
+  transition: transform .25s ease, border-color .25s ease, background .25s ease;
+}
+.news-source-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(28,26,22,0.28);
+  background: rgba(238,232,220,0.82);
+}
+.news-source-kicker {
+  color: var(--ink-3);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+}
+.news-source-title {
+  margin: 0;
+  font-size: 26px;
+  line-height: 1.2;
+  font-weight: 400;
+}
+.news-source-body {
+  margin: 0;
+  color: var(--ink-2);
+  font-size: 14px;
+  line-height: 1.9;
+}
+.news-source-url {
+  margin-top: auto;
+  color: var(--moss-deep);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+}
+
 /* ============ Responsive ============ */
 @media (max-width: 1040px) {
   .hero-grid { grid-template-columns: 1fr; gap: 48px; }
@@ -1247,6 +1302,9 @@ h1, h2, h3, h4 {
   .subject-grid { grid-template-columns: 1fr; }
   .letter-foot { flex-direction: column; align-items: stretch; }
   .letter-foot .btn { justify-content: center; }
+  .news-sources { padding: 40px 22px; }
+  .news-source-grid { grid-template-columns: 1fr; }
+  .news-source-card { min-height: auto; }
 }
 
 
@@ -2589,6 +2647,7 @@ const { useState, useEffect, useRef } = React;
 const ROUTES = [
   { id: 'overview', label: '案内', en: 'OVERVIEW' },
   { id: 'events',   label: '記録', en: 'PAST EVENTS' },
+  { id: 'news',     label: 'AIニュース', en: 'AI NEWS' },
   { id: 'contact',  label: '連絡', en: 'CONTACT' },
 ];
 
@@ -3706,6 +3765,182 @@ window.Events = Events;
 </script>
 
 <script type="text/babel" data-presets="react">
+/* ================= news.jsx ================= */
+// AI News page — AIニュース
+
+function News({ onNav }) {
+  useReveal();
+
+  const sources = [
+    {
+      title: 'OpenAI News',
+      sub: 'OPENAI',
+      body: 'モデル、API、プロダクト更新を追うときの基本入口です。新機能や公開情報を最短で確認できます。',
+      url: 'https://openai.com/news/',
+      label: 'openai.com/news',
+    },
+    {
+      title: 'Anthropic Newsroom',
+      sub: 'ANTHROPIC',
+      body: 'Claude や関連プロダクト、研究、発表を追うための公式ページです。エージェント周辺の動きも見やすいです。',
+      url: 'https://www.anthropic.com/news',
+      label: 'anthropic.com/news',
+    },
+    {
+      title: 'Google DeepMind',
+      sub: 'GOOGLE',
+      body: '研究寄りの話題から Gemini 周辺の流れまで、Google 系のAI動向を追うときの軸になります。',
+      url: 'https://deepmind.google/blog/',
+      label: 'deepmind.google/blog',
+    },
+    {
+      title: 'Hugging Face Blog',
+      sub: 'OPEN SOURCE',
+      body: 'オープンモデル、周辺ツール、研究実装など、実務に近い変化を拾いやすいソースです。',
+      url: 'https://huggingface.co/blog',
+      label: 'huggingface.co/blog',
+    },
+    {
+      title: 'Cloudflare AI',
+      sub: 'INFRA',
+      body: 'AIアプリの運用、推論基盤、エージェント実装など、インフラ側の変化を見るのに向いています。',
+      url: 'https://blog.cloudflare.com/tag/ai/',
+      label: 'blog.cloudflare.com/tag/ai',
+    },
+    {
+      title: 'Vercel Blog',
+      sub: 'DEVTOOLS',
+      body: 'AI SDK やエージェント、プロダクト実装の流れを追いやすい開発者向けの情報源です。',
+      url: 'https://vercel.com/blog',
+      label: 'vercel.com/blog',
+    },
+  ];
+
+  return (
+    <main className="page page-fade">
+      <section className="events-head container">
+        <div className="events-head-grid">
+          <div>
+            <div className="eyebrow">AI NEWS · ニュース</div>
+            <h1 className="events-title">
+              AIの動きを、<br/>気軽に追えるページ。
+            </h1>
+          </div>
+          <div className="events-head-text">
+            トキワバレーが見ているAIの話題を、追いやすくまとめた入口です。
+            速報を全部並べるのではなく、まず見るべき公式ソースと、
+            日々追っているテーマにすぐ飛べるようにしています。
+          </div>
+        </div>
+      </section>
+
+      <section className="three container">
+        <div className="section-head">
+          <div className="mono">— 01</div>
+          <h2 className="section-title">よく追うテーマ</h2>
+        </div>
+
+        <div className="blocks">
+          <article className="block reveal">
+            <div className="block-num mono">i.</div>
+            <h3 className="block-title">基盤モデル</h3>
+            <div className="block-sub mono">FOUNDATION MODELS</div>
+            <p className="block-body">
+              新モデルの公開、性能の伸び、推論まわりの改善、APIや料金の更新など、
+              AI全体の土台がどう変わっているかを見ています。
+            </p>
+          </article>
+
+          <article className="block reveal" style={{transitionDelay: '.08s'}}>
+            <div className="block-num mono">ii.</div>
+            <h3 className="block-title">AIエージェント</h3>
+            <div className="block-sub mono">AI AGENTS</div>
+            <p className="block-body">
+              単発の生成だけでなく、調査、実装、運用までつながるエージェントの流れを追っています。
+              使い方が実務に近いので、変化が大きい領域です。
+            </p>
+          </article>
+
+          <article className="block reveal" style={{transitionDelay: '.16s'}}>
+            <div className="block-num mono">iii.</div>
+            <h3 className="block-title">動画・画像・制作</h3>
+            <div className="block-sub mono">CREATIVE TOOLS</div>
+            <p className="block-body">
+              生成動画、画像、デザイン、編集補助など、
+              つくる人に直結するアップデートを中心に見ています。
+              実際の制作体験がどう変わるかを重視しています。
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section className="news-sources container">
+        <div className="section-head">
+          <div className="mono">— 02</div>
+          <h2 className="section-title">まず見る公式ソース</h2>
+        </div>
+
+        <p className="news-note reveal">
+          OpenAI、Anthropic、Google DeepMind などの公式更新に加えて、
+          実装や運用に近い変化を拾いやすいソースも並べています。
+          「何から見ればいいか」を迷わないための入口です。
+        </p>
+
+        <div className="news-source-grid">
+          {sources.map((source, index) => (
+            <a
+              key={source.title}
+              className="news-source-card reveal"
+              style={{transitionDelay: `${index * 0.05}s`}}
+              href={source.url}
+              target="_blank"
+              rel="noopener"
+            >
+              <span className="mono news-source-kicker">{source.sub}</span>
+              <h3 className="news-source-title">{source.title}</h3>
+              <p className="news-source-body">{source.body}</p>
+              <span className="mono news-source-url">{source.label} ↗</span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section className="cta container">
+        <div className="cta-inner">
+          <div>
+            <div className="mono">— 03</div>
+            <h2 className="cta-title">
+              気になった話題は、<br/>そのまま話せるようにしています。
+            </h2>
+            <p className="cta-sub">
+              ニュースを見るだけで終わらせず、コミュニティや過去イベントにもそのままつながれるようにしています。
+              気になったテーマがあれば、そこから参加してください。
+            </p>
+          </div>
+
+          <div className="cta-actions">
+            <a className="btn" href="https://line.me/ti/g2/0mYq4TMNPCMdZ7FPkrFsQD4W8-b6-11Qoe3svw?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" rel="noopener">
+              <span>コミュニティに入る</span>
+              <span className="arrow">↗</span>
+            </a>
+            <a className="btn-ghost" href="#events" onClick={(e)=>{e.preventDefault(); onNav('events');}}>
+              過去イベントを見る　—
+            </a>
+            <a className="btn-ghost" href="#contact" onClick={(e)=>{e.preventDefault(); onNav('contact');}}>
+              お問い合わせ　—
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}
+
+window.News = News;
+
+</script>
+
+<script type="text/babel" data-presets="react">
 /* ================= contact.jsx ================= */
 // Contact page — 連絡
 
@@ -3907,8 +4142,8 @@ window.Contact = Contact;
 function __tokiwaMount() {
   try {
     const { useState, useEffect } = React;
-    const { Nav, Footer, Overview, Events, Contact } = window;
-    if (!Nav || !Overview || !Events || !Contact || !Footer) {
+    const { Nav, Footer, Overview, Events, News, Contact } = window;
+    if (!Nav || !Overview || !Events || !News || !Contact || !Footer) {
       // Components not loaded yet — retry next tick
       return setTimeout(__tokiwaMount, 50);
     }
@@ -3932,7 +4167,7 @@ function __tokiwaMount() {
       useEffect(() => {
         const onHash = () => {
           const h = location.hash.replace('#','');
-          if (['overview','events','contact'].includes(h) && h !== route) onNav(h);
+          if (['overview','events','news','contact'].includes(h) && h !== route) onNav(h);
         };
         window.addEventListener('hashchange', onHash);
         return () => window.removeEventListener('hashchange', onHash);
@@ -3940,6 +4175,7 @@ function __tokiwaMount() {
 
       let Page = Overview;
       if (route === 'events') Page = Events;
+      if (route === 'news') Page = News;
       if (route === 'contact') Page = Contact;
 
       return (
